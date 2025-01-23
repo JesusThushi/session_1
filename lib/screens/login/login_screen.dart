@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:session_1/screens/signup/signup_screen.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -241,34 +243,40 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // Sign up button with navigation action
   Widget _buildSignUpButton() {
-    return Align(
-      alignment: Alignment.center,
-      child: Text.rich(
-        TextSpan(
-          text: "New User? ",
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Color(0xff9F9F9F),
-          ),
-          children: [
-            TextSpan(
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  if (kDebugMode) {
-                    print("Sign Up");
-                  }
-                  // Navigate to the sign-up screen or show sign-up UI
-                },
-              text: "Sign Up",
-              style: const TextStyle(
-                color: Color(0xff6746CC),
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+  return Align(
+    alignment: Alignment.center,
+    child: Text.rich(
+      TextSpan(
+        text: "New User? ",
+        style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: Color(0xff9F9F9F),
         ),
+        children: [
+          TextSpan(
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                if (kDebugMode) {
+                  print("Sign Up");
+                }
+
+                // Navigate to the sign-up screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpScreen()),
+                );
+              },
+            text: "Sign Up",
+            style: const TextStyle(
+              color: Color(0xff6746CC),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
